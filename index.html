@@ -3,17 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hangman</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<script
+ 	<script
 	  src="https://code.jquery.com/jquery-3.1.1.min.js"
 	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	  crossorigin="anonymous"></script>
-	<script src="assets/script/game.jss"></script>
+	  crossorigin="anonymous"></script> 
+	<script src="assets/javascript/game.js"></script>
+
 
 </head>
 <body>
-	<div id="topbar">Hangman Game</div>
-	<div class="spacer"></div>
-	<div id="gameContent"></div>
+<h1>Hangman</h1><br>
+  <h2>Your favorite classroom pastime returns!</h2>
+		<p id="ratefeld"></p>
+		<form name="rateformular">
+		<hr>
+		<input name="ratezeichen" type="text" size="5" maxlength="1">
+		<input name="ratebutton" type="button" value="Guess" onClick="pruefeZeichen()">
+		<hr>
+
+		<p id="gerateneBuchstaben">Wrong Letters:</p>
+		<img src="http://www.writteninpencil.de/Projekte/Hangman/hangman0.png" id="hangman"><br />
+		<input name="refresh" type="button" value="New Game" onClick="location.reload()">
+		</form>
 </body>
 </html>
