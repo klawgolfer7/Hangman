@@ -11,25 +11,34 @@ var guesses = [
   ["T","R","I","P","L","E"],
   ["K","I","C","K","O","F","F"],
   ["S","O","C","C","E","R"],
-  ["A","S","S","I","S","T"]
+  ["A","S","S","I","S","T"],
+  ["S","T","E","A","L"],
+  ["B","O","G","E","Y"],
+  ["C","U","R","L","I","N","G"],
+  ["H","O","C","K","E","Y"]
 ];
 
-var random = Math.floor((Math.random()*(guesses.length-1))); 
-var randomsportword = guesses[random]; // the word to guess will be chosen from the array above
-var placedletter = new Array(randomsportword.length);
-var startletter = 0;
+// sets random variable equal to a random number the 
+// length of guesses minus 1
+var random = Math.floor((Math.random()*(guesses.length-1)));
+ // the word to guess will be chosen from the array above
+var randomSportWord = guesses[random];
 
-// every letter in the word is symbolized by an underscore in the guessfield
-for (var i = 0; i < placedletter.length; i++){
-	placedletter[i] = "_ ";
+var placedLetter = new Array(randomSportWord.length);
+// Guess amount total 
+var guessAmount = 0;
+
+// every letter in the word is symbolized by an underscore in the guessField
+for (var i = 0; i < placedLetter.length; i++){
+	placedLetter[i] = "_ ";
 }
 
-// prints the guessfield
-function printsportword(){
-	for (var i = 0; i < placedletter.length; i++){
-	var guessfield = document.getElementById("underlinefield");
-	var creationnode = document.createTextNode(placedletter[i]);
-	guessfield.appendChild(creationnode);
+// prints the guessField
+function pringSportWord(){
+	for (var i = 0; i < placedLetter.length; i++){
+	var guessField = document.getElementById("underlinefield");
+	var creationNode = document.createTextNode(placedLetter[i]);
+	guessField.appendChild(creationNode);
 	}
 }
 
@@ -39,33 +48,33 @@ var checkForMatch = function(){
 	var b = f.elements["letterinput"]; 
 	var userInput = b.value; // the letter provided by the user
 	userInput = userInput.toUpperCase();
-	for (var i = 0; i < randomsportword.length; i++){
-		if(randomsportword[i] === userInput){
-			placedletter[i] = userInput + " ";
+	for (var i = 0; i < randomSportWord.length; i++){
+		if(randomSportWord[i] === userInput){
+			placedLetter[i] = userInput + " ";
 			var response = true;
 		}
 	b.value = "";
 	}
 	
-	//deletes the guessfield and replaces it with the new one
-	var guessfield = document.getElementById("underlinefield");
-	guessfield.innerHTML=""; 
-	printsportword();
+	//deletes the guessField and replaces it with the new one
+	var guessField = document.getElementById("underlinefield");
+	guessField.innerHTML=""; 
+	pringSportWord();
 	
 	// if a guessed letter is not in the word, the letter will be put on the "wrong letters"-list and hangman grows
 	if(!response){
 		var wrongLetter = document.getElementById("wrongLetter");
-		var creationnode = document.createTextNode(" " + userInput);
-		wrongLetter.appendChild(creationnode); 
-		startletter++;
+		var creationNode = document.createTextNode(" " + userInput);
+		wrongLetter.appendChild(creationNode); 
+		guessAmount++;
 		var hangman = document.getElementById("hangman");
-    hangman.src = "http://www.writteninpencil.de/Projekte/Hangman/hangman" + startletter + ".png";
+    hangman.src = "http://www.writteninpencil.de/Projekte/Hangman/hangman" + guessAmount + ".png";
 	}
 	
 	//checks if all letters have been found
 	var checkWin = true;
-	for (var i = 0; i < placedletter.length; i++){
-		if(placedletter[i] === "_ ") {
+	for (var i = 0; i < placedLetter.length; i++){
+		if(placedLetter[i] === "_ ") {
 			checkWin = false;
 		}
 	}
@@ -74,13 +83,22 @@ var checkForMatch = function(){
 	}
 	
 	//once you got six wrong letters, you lose
-	if(startletter === 6){
+	if(guessAmount === 6){
 		window.alert("Uh...I guess you're dead now.");
 	}
 }
 
+document.getElementById("id_of_textbox")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("id_of_button").click();
+    }
+});
+
+
 function init(){
-	printsportword();
+	pringSportWord();
 }
 
 window.onload = init;
