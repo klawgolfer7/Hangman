@@ -9,23 +9,23 @@ var guesses = [
   ["B","I","R","D","I","E"],
   ["G","O","L","F"],
   ["S","L","A","M"," ","D","U","N","K"]
-]
-var random = Math.floor((Math.random()*(guesses.length-1))); 
+];
 
-var lsgwort = guesses[random]; // the word to guess will be chosen from the array above
-var ratewort = new Array(lsgwort.length);
+var random = Math.floor((Math.random()*(guesses.length-1))); 
+var randomsportword = guesses[random]; // the word to guess will be chosen from the array above
+var placedletter = new Array(randomsportword.length);
 var fehler = 0;
 
 // every letter in the word is symbolized by an underscore in the guessfield
-for (var i = 0; i < ratewort.length; i++){
-	ratewort[i] = "_ ";
+for (var i = 0; i < placedletter.length; i++){
+	placedletter[i] = "_ ";
 }
 
 // prints the guessfield
-function printRatewort(){
-	for (var i = 0; i < ratewort.length; i++){
+function printsportword(){
+	for (var i = 0; i < placedletter.length; i++){
 	var ratefeld = document.getElementById("ratefeld");
-	var buchstabe = document.createTextNode(ratewort[i]);
+	var buchstabe = document.createTextNode(placedletter[i]);
 	ratefeld.appendChild(buchstabe);
 	}
 }
@@ -36,9 +36,9 @@ var pruefeZeichen = function(){
 	var b = f.elements["ratezeichen"]; 
 	var zeichen = b.value; // the letter provided by the user
 	zeichen = zeichen.toUpperCase();
-	for (var i = 0; i < lsgwort.length; i++){
-		if(lsgwort[i] === zeichen){
-			ratewort[i] = zeichen + " ";
+	for (var i = 0; i < randomsportword.length; i++){
+		if(randomsportword[i] === zeichen){
+			placedletter[i] = zeichen + " ";
 			var treffer = true;
 		}
 	b.value = "";
@@ -47,7 +47,7 @@ var pruefeZeichen = function(){
 	//deletes the guessfield and replaces it with the new one
 	var ratefeld = document.getElementById("ratefeld");
 	ratefeld.innerHTML=""; 
-	printRatewort();
+	printsportword();
 	
 	// if a guessed letter is not in the word, the letter will be put on the "wrong letters"-list and hangman grows
 	if(!treffer){
@@ -61,8 +61,8 @@ var pruefeZeichen = function(){
 	
 	//checks if all letters have been found
 	var fertig = true;
-	for (var i = 0; i < ratewort.length; i++){
-		if(ratewort[i] === "_ "){
+	for (var i = 0; i < placedletter.length; i++){
+		if(placedletter[i] === "_ "){
 			fertig = false;
 		}
 	}
@@ -77,7 +77,7 @@ var pruefeZeichen = function(){
 }
 
 function init(){
-	printRatewort();
+	printsportword();
 }
 
 window.onload = init;
