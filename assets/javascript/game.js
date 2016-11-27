@@ -25,8 +25,8 @@ for (var i = 0; i < placedletter.length; i++){
 function printsportword(){
 	for (var i = 0; i < placedletter.length; i++){
 	var guessfield = document.getElementById("underlinefield");
-	var buchstabe = document.createTextNode(placedletter[i]);
-	guessfield.appendChild(buchstabe);
+	var creationnode = document.createTextNode(placedletter[i]);
+	guessfield.appendChild(creationnode);
 	}
 }
 
@@ -52,8 +52,8 @@ var checkForMatch = function(){
 	// if a guessed letter is not in the word, the letter will be put on the "wrong letters"-list and hangman grows
 	if(!response){
 		var wrongLetter = document.getElementById("wrongLetter");
-		var buchstabe = document.createTextNode(" " + userInput);
-		wrongLetter.appendChild(buchstabe); 
+		var creationnode = document.createTextNode(" " + userInput);
+		wrongLetter.appendChild(creationnode); 
 		startletter++;
 		var hangman = document.getElementById("hangman");
     hangman.src = "http://www.writteninpencil.de/Projekte/Hangman/hangman" + startletter + ".png";
@@ -62,7 +62,7 @@ var checkForMatch = function(){
 	//checks if all letters have been found
 	var checkWin = true;
 	for (var i = 0; i < placedletter.length; i++){
-		if(placedletter[i] === "_ "){
+		if(placedletter[i] === "_ ") {
 			checkWin = false;
 		}
 	}
