@@ -25,7 +25,7 @@ var random = Math.floor((Math.random()*(guesses.length-1)));
 var randomSportWord = guesses[random];
 
 var placedLetter = new Array(randomSportWord.length);
-// Guess amount total 
+// Guess amount total 1
 var guessAmount = 0;
 
 // every letter in the word is symbolized by an underscore in the guessField
@@ -61,7 +61,8 @@ var checkForMatch = function(){
 	guessField.innerHTML=""; 
 	pringSportWord();
 	
-	// if a guessed letter is not in the word, the letter will be put on the "wrong letters"-list and hangman grows
+	// if a guessed letter is not in the word, the letter will be put on the "wrong letters"-list 
+	// and hangman gets an extra limb 
 	if(!response){
 		var wrongLetter = document.getElementById("wrongLetter");
 		var creationNode = document.createTextNode(" " + userInput);
@@ -78,6 +79,7 @@ var checkForMatch = function(){
 			checkWin = false;
 		}
 	}
+	// user is alerted that they win
 	if(checkWin){
 		window.alert("You win!");
 	}
@@ -88,6 +90,8 @@ var checkForMatch = function(){
 	}
 }
 
+// This is the function that is trying to make the userguess text box work like the 
+// submit button when you hit enter/return.
 document.getElementById("id_of_textbox")
     .addEventListener("keyup", function(event) {
     event.preventDefault();
