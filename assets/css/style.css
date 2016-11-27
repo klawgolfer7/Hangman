@@ -1,9 +1,8 @@
 /*Style Sheet for Hangman*/
 
-@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url('https://fonts.googleapis.com/css?family=Sumana');
 
 body {
-	background: url('http://www.writteninpencil.de/Projekte/Hangman/hangman-bg.png') fixed;
 	text-align: center;
 	font-family: Helvetica, sans-serif;
 }
@@ -14,15 +13,15 @@ input {
 }
 
 #ratefeld {
-	font-family: 'Permanent Marker', 'cursive';
+	font-family: 'Sumana', serif;
 	font-size: 2.0em;
 }
 
 h1 {
-	font-family: 'Permanent Marker', 'cursive';
+	font-family: 'Sumana', serif;
 }
 
 h2 {
-	font-family: 'Permanent Marker', 'cursive';
+	font-family: 'Sumana', serif;
 }
 

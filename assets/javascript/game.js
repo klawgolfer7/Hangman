@@ -1,6 +1,6 @@
 
 
-var lsgwoerter = [
+var guesses = [
 	["B", "A", "S", "K", "E", "T", "B", "A", "L", "L"],
 	["B", "A", "S", "E", "B", "A", "L", "L"],
   ["F","O","O","T","B","A","L","L"],
@@ -10,9 +10,9 @@ var lsgwoerter = [
   ["G","O","L","F"],
   ["S","L","A","M"," ","D","U","N","K"]
 ]
-var random = Math.floor((Math.random()*(lsgwoerter.length-1))); 
+var random = Math.floor((Math.random()*(guesses.length-1))); 
 
-var lsgwort = lsgwoerter[random]; // the word to guess will be chosen from the array above
+var lsgwort = guesses[random]; // the word to guess will be chosen from the array above
 var ratewort = new Array(lsgwort.length);
 var fehler = 0;
 
