@@ -90,15 +90,28 @@ var checkForMatch = function(){
 	}
 }
 
-// This is the function that is trying to make the userguess text box work like the 
-// submit button when you hit enter/return.
-document.getElementById("id_of_textbox")
-    .addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode == 13) {
-        document.getElementById("id_of_button").click();
+// // This is the function that is trying to make the userguess text box work like the 
+// // submit button when you hit enter/return.
+// document.getElementById("enterkey")
+//     .addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode == 13) {
+//         document.getElementById("ratebutton").click();
+//     }
+// });
+
+// attempt to make a trigger for submit button
+// with an keyup on Enter/Return
+    function searchKeyPress(e) {
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('ratebutton').click();
+        return false;
     }
-});
+    return true;
+}
 
 
 function init(){
