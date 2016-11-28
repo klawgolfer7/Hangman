@@ -5,6 +5,11 @@
 body {
 	text-align: center;
 	font-family: Helvetica, sans-serif;
+	background: url("../images/sportsbackground2.jpeg") repeat;
+	background-position: auto;
+	color: white;
+	outline-color: black;
+	outline-width: 2px;
 }
 input {
 	border: 2px solid #999;
