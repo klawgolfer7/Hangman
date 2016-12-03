@@ -90,6 +90,7 @@ var checkForMatch = function(){
 	}
 }
 
+
 // // This is the function that is trying to make the userguess text box work like the 
 // // submit button when you hit enter/return.
 // document.getElementById("enterkey")
